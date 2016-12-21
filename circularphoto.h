@@ -13,7 +13,7 @@
 class CircularPhoto : public QLabel
 {
 public:
-    CircularPhoto(QLabel *parent = NULL_NUM, \
+    CircularPhoto(QWidget *parent = NULL_NUM, \
                   QImage image_usr = QImage(":/images/user.png"), \
                   QSize image_size = QSize(HD_PRTRT, HD_PRTRT));
     ~CircularPhoto();

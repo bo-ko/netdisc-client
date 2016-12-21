@@ -1,9 +1,9 @@
 #include "circularphoto.h"
 
-CircularPhoto::CircularPhoto(QLabel *parent, QImage image_usr, QSize image_size)
+CircularPhoto::CircularPhoto(QWidget *parent, QImage image_usr, QSize image_size)
     : QLabel(parent), img_usr(image_usr), img_size(image_size)
 {
-
+    this->setPixmap(QPixmap::fromImage(getRoundQImage(img_usr, img_size)));
 }
 // 设置图片
 void CircularPhoto::set_image(QImage &photo)
@@ -44,6 +44,6 @@ void CircularPhoto::PaintEvent(QPaintEvent* p_event)
 {
     Q_UNUSED(p_event);
 
-    QPainter p;
+    QPainter p(this);
     p.drawImage(NULL_NUM, NULL_NUM, getRoundQImage(img_usr, img_size));
 }
