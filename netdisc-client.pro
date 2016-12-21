@@ -14,8 +14,10 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
     login.cpp \
-    main_interface.cpp
+    main_interface.cpp \
+    circularphoto.cpp
 
 HEADERS  += \
     login.h \
-    main_interface.h
+    main_interface.h \
+    circularphoto.h
