@@ -2,7 +2,7 @@
 #define CIRCULARPHOTO_H
 
 #define NULL_NUM 0
-#define HD_PRTRT 120
+#define HD_PRTRT 64
 
 #include <QSize>
 #include <QImage>
@@ -12,9 +12,11 @@
 
 class CircularPhoto : public QLabel
 {
+    Q_OBJECT
+
 public:
     CircularPhoto(QWidget *parent = NULL_NUM, \
-                  QImage image_usr = QImage(":/images/user.png"), \
+                  QImage image_usr = QImage("logo.png"), \
                   QSize image_size = QSize(HD_PRTRT, HD_PRTRT));
     ~CircularPhoto();
     void set_image(QImage &photo);

@@ -13,11 +13,11 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-    login.cpp \
     main_interface.cpp \
-    circularphoto.cpp
+    circularphoto.cpp \
+    login_dlg.cpp
 
 HEADERS  += \
-    login.h \
     main_interface.h \
-    circularphoto.h
+    circularphoto.h \
+    login_dlg.h

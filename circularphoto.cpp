@@ -8,7 +8,7 @@ CircularPhoto::CircularPhoto(QWidget *parent, QImage image_usr, QSize image_size
 // 设置图片
 void CircularPhoto::set_image(QImage &photo)
 {
-
+    QImage image_usr = photo;
 }
 
 // 图片处理成圆形
@@ -27,7 +27,7 @@ QImage CircularPhoto::getRoundQImage(const QImage& img,QSize size)
     painter.fillRect(resultImage.rect(), Qt::transparent); // 透明
     painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
 
-    QImage mask(":/images/mask96px.png");
+    QImage mask("mask.png");
     painter.drawImage(NULL_NUM, NULL_NUM, mask);
 
     painter.setCompositionMode(QPainter::CompositionMode_SourceOut);
@@ -47,3 +47,6 @@ void CircularPhoto::PaintEvent(QPaintEvent* p_event)
     QPainter p(this);
     p.drawImage(NULL_NUM, NULL_NUM, getRoundQImage(img_usr, img_size));
 }
+
+CircularPhoto::~CircularPhoto()
+{}
