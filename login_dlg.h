@@ -29,6 +29,7 @@ private:
     QLabel      *WarningLabel;
 
 private slots:
+    void LoginClicked();
 
 };
 

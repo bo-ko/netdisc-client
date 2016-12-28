@@ -19,6 +19,9 @@ LoginDlg::LoginDlg(QWidget *parent) : QDialog(parent)
     ChekAutoRmbr->addStretch();
     ChekAutoRmbr->addWidget(RmbrPasswd);
 
+    /* login button clicked signal */
+    connect(LoginBut, SIGNAL(clicked()), this, SLOT(LoginClicked()));
+
     /* main layout */
     MainLayout->addStretch();
     MainLayout->addWidget(HeaderPhoto, 0, Qt::AlignHCenter | Qt::AlignVCenter);
@@ -33,10 +36,13 @@ LoginDlg::LoginDlg(QWidget *parent) : QDialog(parent)
     MainLayout->addStretch();
     MainLayout->addWidget(LoginBut);
     MainLayout->addStretch();
+
+    WarningLabel->hide();
 }
 
 LoginDlg::~LoginDlg()
 {
+    /*
     delete Passwd;
     delete UserName;
     delete LoginBut;
@@ -46,4 +52,10 @@ LoginDlg::~LoginDlg()
     delete ChekAutoRmbr;
     delete AutoLogin;
     delete RmbrPasswd;
+    */
+}
+
+void LoginDlg::LoginClicked()
+{
+    accept();
 }
