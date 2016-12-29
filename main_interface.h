@@ -1,7 +1,12 @@
 #ifndef MAININTERFACE_H
 #define MAININTERFACE_H
 
+#include <QSize>
+#include <QImage>
 #include <QWidget>
+#include <QPushButton>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
 
 class MainInterface : public QWidget
 {

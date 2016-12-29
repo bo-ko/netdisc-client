@@ -27,6 +27,9 @@ private:
     QCheckBox   *RmbrPasswd;  // remember password
     QHBoxLayout *ChekAutoRmbr;
     QLabel      *WarningLabel;
+    QPushButton *LoginExitBt; // close
+    QPushButton *LoginHidBt;  // minimize
+    QHBoxLayout *LogDlgLayout;
 
 private slots:
     void LoginClicked();

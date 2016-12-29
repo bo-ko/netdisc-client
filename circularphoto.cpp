@@ -4,14 +4,22 @@ CircularPhoto::CircularPhoto(QWidget *parent, QImage image_usr, QSize image_size
     : QLabel(parent), img_usr(image_usr), img_size(image_size)
 {
     this->setPixmap(QPixmap::fromImage(getRoundQImage(img_usr, img_size)));
+    // getRoundQImage(img_usr, img_size).save("test.png", "PNG", 100);
 }
-// 设置图片
+
+/* set image
+ *
+ *
+ */
 void CircularPhoto::set_image(QImage &photo)
 {
     QImage image_usr = photo;
 }
 
-// 图片处理成圆形
+/*
+ * The picture is processed into a circle
+ *
+ */
 QImage CircularPhoto::getRoundQImage(const QImage& img,QSize size)
 {
     if (img.isNull())
@@ -22,9 +30,9 @@ QImage CircularPhoto::getRoundQImage(const QImage& img,QSize size)
     QImage resultImage(size,QImage::Format_ARGB32_Premultiplied);
     QPainter painter(&resultImage);
 
-    painter.setRenderHints(QPainter::SmoothPixmapTransform);//消锯齿
+    painter.setRenderHints(QPainter::SmoothPixmapTransform); // Antialiasing
     painter.setCompositionMode(QPainter::CompositionMode_Source);
-    painter.fillRect(resultImage.rect(), Qt::transparent); // 透明
+    painter.fillRect(resultImage.rect(), Qt::transparent);   // Transparent
     painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
 
     QImage mask("mask.png");
@@ -39,7 +47,10 @@ QImage CircularPhoto::getRoundQImage(const QImage& img,QSize size)
     return resultImage;
 }
 
-// 画图事件函数
+/*
+ * Paint event function
+ *
+ */
 void CircularPhoto::PaintEvent(QPaintEvent* p_event)
 {
     Q_UNUSED(p_event);

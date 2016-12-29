@@ -2,11 +2,12 @@
 #define CIRCULARPHOTO_H
 
 #define NULL_NUM 0
-#define HD_PRTRT 64
+#define HD_PRTRT 86
 
 #include <QSize>
 #include <QImage>
 #include <QLabel>
+#include <QPixmap>
 #include <QPainter>
 #include <QPaintEvent>
 

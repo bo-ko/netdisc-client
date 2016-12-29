@@ -3,7 +3,8 @@
 
 LoginDlg::LoginDlg(QWidget *parent) : QDialog(parent)
 {
-    this->setFixedSize(300, 260);
+    this->setFixedSize(300, 282);
+    this->setWindowFlags(Qt::FramelessWindowHint);
 
     /* new widgets */
     MainLayout = new QVBoxLayout(this);
@@ -12,17 +13,27 @@ LoginDlg::LoginDlg(QWidget *parent) : QDialog(parent)
     LoginBut = new QPushButton(tr("Login"));
     HeaderPhoto = new CircularPhoto();
     WarningLabel = new QLabel(tr("<font color=red>Qt!</font>"));
+
     ChekAutoRmbr = new QHBoxLayout();
     AutoLogin = new QCheckBox(tr("AutoLogin"));
     RmbrPasswd = new QCheckBox(tr("Remember"));
     ChekAutoRmbr->addWidget(AutoLogin);
     ChekAutoRmbr->addStretch();
     ChekAutoRmbr->addWidget(RmbrPasswd);
-
     /* login button clicked signal */
     connect(LoginBut, SIGNAL(clicked()), this, SLOT(LoginClicked()));
 
+    LoginExitBt = new QPushButton("x");
+    LoginHidBt  = new QPushButton("-");
+    LogDlgLayout = new QHBoxLayout();
+    LogDlgLayout->addStretch();
+    LogDlgLayout->addWidget(LoginHidBt, 0, Qt::AlignRight);
+    LogDlgLayout->addWidget(LoginExitBt, 0,Qt::AlignRight);
+    /* cloce app */
+    connect(LoginExitBt, SIGNAL(clicked()), this, SLOT(close()));
+
     /* main layout */
+    MainLayout->addLayout(LogDlgLayout);
     MainLayout->addStretch();
     MainLayout->addWidget(HeaderPhoto, 0, Qt::AlignHCenter | Qt::AlignVCenter);
     MainLayout->addStretch();
@@ -40,20 +51,12 @@ LoginDlg::LoginDlg(QWidget *parent) : QDialog(parent)
     WarningLabel->hide();
 }
 
+
 LoginDlg::~LoginDlg()
 {
-    /*
-    delete Passwd;
-    delete UserName;
-    delete LoginBut;
-    delete HeaderPhoto;
-    delete MainLayout;
-    delete WarningLabel;
-    delete ChekAutoRmbr;
-    delete AutoLogin;
-    delete RmbrPasswd;
-    */
+
 }
+
 
 void LoginDlg::LoginClicked()
 {

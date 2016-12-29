@@ -6,14 +6,17 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    LoginDlg dlg;
-    MainInterface w;
+    LoginDlg _Dlg;
+    MainInterface _MainWidow;
 
-    if(dlg.exec()==QDialog::Accepted) //利用Accepted信号判断enterBtn是否被按下
+    /* Use the Accepted signal to determine whether the login button was pressed */
+    if(_Dlg.exec()==QDialog::Accepted)
     {
-        w.show();
+        _MainWidow.show();
         return a.exec();
     }
     else
+    {
         return 0;
+    }
 }
