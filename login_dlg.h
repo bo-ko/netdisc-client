@@ -7,8 +7,8 @@
 #include <QLineEdit>
 #include <QCheckBox>
 #include <QPushButton>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
+#include <QToolButton>
+
 
 class LoginDlg : public QDialog
 {
@@ -18,18 +18,21 @@ public:
     ~LoginDlg();
 
 private:
+    int _width;
     QLineEdit   *Passwd;
     QLineEdit   *UserName;
     QPushButton *LoginBut;
     QLabel      *HeaderPhoto;
-    QVBoxLayout *MainLayout;
     QCheckBox   *AutoLogin;
     QCheckBox   *RmbrPasswd;  // remember password
-    QHBoxLayout *ChekAutoRmbr;
     QLabel      *WarningLabel;
-    QPushButton *LoginExitBt; // close
-    QPushButton *LoginHidBt;  // minimize
-    QHBoxLayout *LogDlgLayout;
+    QToolButton *LoginExitBt; // close
+    QToolButton *LoginHidBt;  // minimize
+    QLabel      *RegisterLabel;
+    QLabel      *FindPswdLabel;
+    void InitLgnDlgUI();
+    void WarningLayout();
+
 
 private slots:
     void LoginClicked();

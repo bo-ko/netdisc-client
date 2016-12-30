@@ -2,7 +2,7 @@
 #define CIRCULARPHOTO_H
 
 #define NULL_NUM 0
-#define HD_PRTRT 86
+#define HD_PRTRT 64
 
 #include <QSize>
 #include <QImage>
