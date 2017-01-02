@@ -12,12 +12,15 @@ TARGET = netdisc-client
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-    main_interface.cpp \
-    circularphoto.cpp \
-    login_dlg.cpp
+SOURCES +=\
+    ToolBt.cpp \
+    CircularPhoto.cpp \
+    LoginDlg.cpp \
+    Main.cpp \
+    MainInterface.cpp
 
 HEADERS  += \
-    main_interface.h \
-    circularphoto.h \
-    login_dlg.h
+    ToolBt.h \
+    CircularPhoto.h \
+    MainInterface.h \
+    LoginDlg.h

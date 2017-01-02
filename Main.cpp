@@ -1,5 +1,5 @@
-#include "main_interface.h"
-#include "login_dlg.h"
+#include "MainInterface.h"
+#include "LoginDlg.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])

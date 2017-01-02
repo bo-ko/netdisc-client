@@ -1,4 +1,4 @@
-#include "main_interface.h"
+#include "MainInterface.h"
 
 MainInterface::MainInterface(QWidget *parent)
     : QWidget(parent)

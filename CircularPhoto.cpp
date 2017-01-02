@@ -1,4 +1,4 @@
-#include "circularphoto.h"
+#include "CircularPhoto.h"
 
 CircularPhoto::CircularPhoto(QWidget *parent, QImage image_usr, QSize image_size)
     : QLabel(parent), img_usr(image_usr), img_size(image_size)

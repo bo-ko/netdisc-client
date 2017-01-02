@@ -1,6 +1,8 @@
 #ifndef LOGIN_H
 #define LOGIN_H
 
+#include "ToolBt.h"
+
 #include <QLabel>
 #include <QWidget>
 #include <QDialog>
@@ -8,6 +10,8 @@
 #include <QCheckBox>
 #include <QPushButton>
 #include <QToolButton>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
 
 
 class LoginDlg : public QDialog
@@ -26,10 +30,13 @@ private:
     QCheckBox   *AutoLogin;
     QCheckBox   *RmbrPasswd;  // remember password
     QLabel      *WarningLabel;
-    QToolButton *LoginExitBt; // close
-    QToolButton *LoginHidBt;  // minimize
     QLabel      *RegisterLabel;
     QLabel      *FindPswdLabel;
+    QVBoxLayout *DlgMainLt;
+    QVBoxLayout *DlgWidgetLt;
+    QHBoxLayout *AutoRmber;
+    QHBoxLayout *OtherLabel;
+    ToolBt *DlgToolBt;
     void InitLgnDlgUI();
     void WarningLayout();
 
