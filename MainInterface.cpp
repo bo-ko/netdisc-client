@@ -9,8 +9,8 @@ MainInterface::MainInterface(QWidget *parent)
 
     MainToolBt = new ToolBt();
 
-    connect(MainToolBt, SIGNAL(LgnDlgClosed()), this, SLOT(close()));
-    connect(MainToolBt, SIGNAL(LgnDLgMinimi()), this, SLOT(showMinimized()));
+    connect(MainToolBt, SIGNAL(Closed()), this, SLOT(close()));
+    connect(MainToolBt, SIGNAL(Minimi()), this, SLOT(showMinimized()));
 
     MainLt = new QVBoxLayout();
 

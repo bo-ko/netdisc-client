@@ -10,12 +10,12 @@ class ToolBt : public QWidget
 public:
     explicit ToolBt(QWidget *parent = 0);
 
-    QToolButton *LoginExitBt; // close
-    QToolButton *LoginMiniBt;  // minimize
+    QToolButton *ExitBt; // close
+    QToolButton *MiniBt;  // minimize
 
 signals:
-    void LgnDLgMinimi();
-    void LgnDlgClosed();
+    void Minimi();
+    void Closed();
 
 public slots:
 };

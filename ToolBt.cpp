@@ -2,14 +2,14 @@
 
 ToolBt::ToolBt(QWidget *parent) : QWidget(parent)
 {
-    LoginExitBt = new QToolButton(this);
-    LoginMiniBt  = new QToolButton(this);
+    ExitBt = new QToolButton(this);
+    MiniBt  = new QToolButton(this);
 
-    LoginExitBt->setGeometry(64, 2, 24, 24);
-    LoginMiniBt->setGeometry(36, 2, 24, 24);
+    ExitBt->setGeometry(64, 2, 24, 24);
+    MiniBt->setGeometry(36, 2, 24, 24);
 
-    connect(LoginExitBt, SIGNAL(clicked()), this, SIGNAL(LgnDlgClosed()));
-    connect(LoginMiniBt, SIGNAL(clicked()), this, SIGNAL(LgnDLgMinimi()));
+    connect(ExitBt, SIGNAL(clicked()), this, SIGNAL(Closed()));
+    connect(MiniBt, SIGNAL(clicked()), this, SIGNAL(Minimi()));
 
     this->setFixedSize(93, 26);
 }

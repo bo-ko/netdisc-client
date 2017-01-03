@@ -20,11 +20,15 @@ void LoginDlg::InitLgnDlgUI()
 
     /* new widgets */
     DlgToolBt = new ToolBt();
-    connect(DlgToolBt, SIGNAL(LgnDlgClosed()), this, SLOT(close()));
-    connect(DlgToolBt, SIGNAL(LgnDLgMinimi()), this, SLOT(showMinimized()));
+    connect(DlgToolBt, SIGNAL(Closed()), this, SLOT(close()));
+    connect(DlgToolBt, SIGNAL(Minimi()), this, SLOT(showMinimized()));
 
     Passwd = new QLineEdit();
+    Passwd->setPlaceholderText(tr("Password"));
     UserName = new QLineEdit();
+    UserName->setPlaceholderText(tr("UserName"));
+    Passwd->setStyleSheet("QLineEdit{ height: 30px;}");
+    UserName->setStyleSheet("QLineEdit{ height: 30px;}");
     LoginBut = new QPushButton(tr("Login"));
     /* login button clicked signal */
     connect(LoginBut, SIGNAL(clicked()), this, SLOT(LoginClicked()));
@@ -47,9 +51,9 @@ void LoginDlg::InitLgnDlgUI()
     AutoRmber = new QHBoxLayout();
     AutoLogin = new QCheckBox(tr("AutoLogin"));
     RmbrPasswd = new QCheckBox(tr("Remember"));
-    AutoRmber->addWidget(AutoLogin);
-    AutoRmber->addStretch();
     AutoRmber->addWidget(RmbrPasswd);
+    AutoRmber->addStretch();
+    AutoRmber->addWidget(AutoLogin);
 
     DlgMainLt = new QVBoxLayout();
     DlgWidgetLt = new QVBoxLayout();
