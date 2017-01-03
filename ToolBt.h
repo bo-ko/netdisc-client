@@ -14,6 +14,8 @@ public:
     QToolButton *LoginMiniBt;  // minimize
 
 signals:
+    void LgnDLgMinimi();
+    void LgnDlgClosed();
 
 public slots:
 };

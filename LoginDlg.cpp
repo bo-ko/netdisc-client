@@ -15,11 +15,14 @@ LoginDlg::~LoginDlg()
 
 void LoginDlg::InitLgnDlgUI()
 {
-    this->setFixedSize(300, 227);
+    this->setFixedSize(300, 270);
     this->setWindowFlags(Qt::FramelessWindowHint);
 
     /* new widgets */
     DlgToolBt = new ToolBt();
+    connect(DlgToolBt, SIGNAL(LgnDlgClosed()), this, SLOT(close()));
+    connect(DlgToolBt, SIGNAL(LgnDLgMinimi()), this, SLOT(showMinimized()));
+
     Passwd = new QLineEdit();
     UserName = new QLineEdit();
     LoginBut = new QPushButton(tr("Login"));
