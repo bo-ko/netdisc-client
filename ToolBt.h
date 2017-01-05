@@ -10,8 +10,12 @@ class ToolBt : public QWidget
 public:
     explicit ToolBt(QWidget *parent = 0);
 
+private:
     QToolButton *ExitBt; // close
-    QToolButton *MiniBt;  // minimize
+    QToolButton *MiniBt; // minimize
+
+    void InitUi();
+    void InitConnect();
 
 signals:
     void Minimi();

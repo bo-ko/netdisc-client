@@ -3,8 +3,22 @@
 CircularPhoto::CircularPhoto(QWidget *parent, QImage image_usr, QSize image_size)
     : QLabel(parent), img_usr(image_usr), img_size(image_size)
 {
+    InitData();
+    InitUi();
+}
+
+CircularPhoto::~CircularPhoto()
+{}
+
+void CircularPhoto::InitData()
+{
+    img_usr  = QImage("logo.png");
+    img_size = QSize(HD_PRTRT, HD_PRTRT);
+}
+
+void CircularPhoto::InitUi()
+{
     this->setPixmap(QPixmap::fromImage(getRoundQImage(img_usr, img_size)));
-    // getRoundQImage(img_usr, img_size).save("test.png", "PNG", 100);
 }
 
 /* set image
@@ -58,6 +72,3 @@ void CircularPhoto::PaintEvent(QPaintEvent* p_event)
     QPainter p(this);
     p.drawImage(NULL_NUM, NULL_NUM, getRoundQImage(img_usr, img_size));
 }
-
-CircularPhoto::~CircularPhoto()
-{}

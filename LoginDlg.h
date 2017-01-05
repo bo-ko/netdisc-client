@@ -12,7 +12,8 @@
 #include <QToolButton>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
-
+#include <QMouseEvent>
+#include <QApplication>
 
 class LoginDlg : public QDialog
 {
@@ -22,28 +23,36 @@ public:
     ~LoginDlg();
 
 private:
-    int _width;
-    QLineEdit   *Passwd;
-    QLineEdit   *UserName;
-    QPushButton *LoginBut;
+    bool   DlgMoveing;
+    QPoint DlgMovePosition;
+
+    ToolBt      *DlgToolBt;
     QLabel      *HeaderPhoto;
-    QCheckBox   *AutoLogin;
-    QCheckBox   *RmbrPasswd;  // remember password
     QLabel      *WarningLabel;
     QLabel      *RegisterLabel;
     QLabel      *FindPswdLabel;
+    QLineEdit   *Passwd;
+    QLineEdit   *UserName;
+    QCheckBox   *AutoLogin;
+    QCheckBox   *RmbrPasswd;  // remember password
+    QPushButton *LoginBut;
     QVBoxLayout *DlgMainLt;
     QVBoxLayout *DlgWidgetLt;
     QHBoxLayout *AutoRmber;
     QHBoxLayout *OtherLabel;
-    ToolBt *DlgToolBt;
-    void InitLgnDlgUI();
-    void WarningLayout();
 
+    void InitData();
+    void InitUi();
+    void InitConnect();
+    void WarningLayout();
 
 private slots:
     void LoginClicked();
 
+protected:
+    void mouseMoveEvent(QMouseEvent *event);
+    void mousePressEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event);
 };
 
 #endif // LOGIN_H

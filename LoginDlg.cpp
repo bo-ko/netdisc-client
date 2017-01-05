@@ -3,8 +3,9 @@
 
 LoginDlg::LoginDlg(QWidget *parent) : QDialog(parent)
 {
-    _width = this->width(); // widget width
-    InitLgnDlgUI();
+    InitData();
+    InitUi();
+    InitConnect();
     WarningLayout();
 }
 
@@ -13,34 +14,32 @@ LoginDlg::~LoginDlg()
 {
 }
 
-void LoginDlg::InitLgnDlgUI()
+void LoginDlg::InitData()
 {
-    this->setFixedSize(300, 270);
+    DlgMoveing = false;
+    DlgMovePosition = QPoint();
+}
+
+void LoginDlg::InitUi()
+{
+    this->setFixedSize(300, 272);
     this->setWindowFlags(Qt::FramelessWindowHint);
 
-    /* new widgets */
     DlgToolBt = new ToolBt();
-    connect(DlgToolBt, SIGNAL(Closed()), this, SLOT(close()));
-    connect(DlgToolBt, SIGNAL(Minimi()), this, SLOT(showMinimized()));
-
     Passwd = new QLineEdit();
-    Passwd->setPlaceholderText(tr("Password"));
     UserName = new QLineEdit();
+    Passwd->setPlaceholderText(tr("Password"));
     UserName->setPlaceholderText(tr("UserName"));
-    Passwd->setStyleSheet("QLineEdit{ height: 30px;}");
-    UserName->setStyleSheet("QLineEdit{ height: 30px;}");
     LoginBut = new QPushButton(tr("Login"));
-    /* login button clicked signal */
-    connect(LoginBut, SIGNAL(clicked()), this, SLOT(LoginClicked()));
     HeaderPhoto = new CircularPhoto();
 
     OtherLabel = new QHBoxLayout();
     RegisterLabel = new QLabel();
     RegisterLabel->setOpenExternalLinks(true);
-    RegisterLabel->setText(tr("<a href=\"http://www.csdn.net/\">打开CSDN"));
+    RegisterLabel->setText(tr("<a href=\"http://www.csdn.net/\">Open CSDN"));
     FindPswdLabel = new QLabel();
     FindPswdLabel->setOpenExternalLinks(true);
-    FindPswdLabel->setText(tr("<a href=\"http://www.baidu.com/\">打开Baidu"));
+    FindPswdLabel->setText(tr("<a href=\"http://www.baidu.com/\">Open Baidu"));
     OtherLabel->addWidget(RegisterLabel);
     OtherLabel->addStretch();
     OtherLabel->addWidget(FindPswdLabel);
@@ -55,11 +54,8 @@ void LoginDlg::InitLgnDlgUI()
     AutoRmber->addStretch();
     AutoRmber->addWidget(AutoLogin);
 
-    DlgMainLt = new QVBoxLayout();
     DlgWidgetLt = new QVBoxLayout();
-
-    DlgWidgetLt->setContentsMargins(37, 0, 37, 4);
-
+    DlgWidgetLt->setContentsMargins(37, 0, 37, 0);
     DlgWidgetLt->addWidget(HeaderPhoto, 0, Qt::AlignTop | Qt::AlignCenter);
     DlgWidgetLt->addWidget(UserName);
     DlgWidgetLt->addWidget(Passwd);
@@ -67,23 +63,57 @@ void LoginDlg::InitLgnDlgUI()
     DlgWidgetLt->addWidget(LoginBut);
     DlgWidgetLt->addLayout(OtherLabel);
 
-
+    DlgMainLt = new QVBoxLayout();
     DlgMainLt->addWidget(DlgToolBt, 0, Qt::AlignRight | Qt::AlignTop);
     DlgMainLt->addLayout(DlgWidgetLt);
-    DlgMainLt->setContentsMargins(0, 0, 0, 4);
+    DlgMainLt->setContentsMargins(0, 0, 0, 0);
 
     this->setLayout(DlgMainLt);
+}
 
+void LoginDlg::InitConnect()
+{
+    connect(DlgToolBt, SIGNAL(Closed()), this, SLOT(close()));
+    connect(DlgToolBt, SIGNAL(Minimi()), this, SLOT(showMinimized()));
+    /* login button clicked signal */
+    connect(LoginBut, SIGNAL(clicked()), this, SLOT(LoginClicked()));
 }
 
 void LoginDlg::WarningLayout()
 {
-
-
     //this->update();
 }
 
 void LoginDlg::LoginClicked()
 {
     accept();
+}
+
+/* mouse clicked */
+void LoginDlg::mousePressEvent(QMouseEvent *event)
+{
+    DlgMoveing = true;
+    DlgMovePosition = event->globalPos() - pos();
+    return QDialog::mousePressEvent(event);
+}
+
+/* mouse move */
+void LoginDlg::mouseMoveEvent(QMouseEvent *event)
+{
+    if (DlgMoveing && (event->buttons() && Qt::LeftButton) \
+        && (event->globalPos()-DlgMovePosition).manhattanLength() > \
+            QApplication::startDragDistance())
+    {
+        move(event->globalPos()-DlgMovePosition);
+        DlgMovePosition = event->globalPos() - pos();
+    }
+    return QDialog::mouseMoveEvent(event);
+}
+
+/* mouse free */
+void LoginDlg::mouseReleaseEvent(QMouseEvent *event)
+{
+    Q_UNUSED(event);
+
+    DlgMoveing = false;
 }

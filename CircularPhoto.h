@@ -25,7 +25,12 @@ public:
 private:
     QImage img_usr;
     QSize  img_size;
+
+    void InitUi();
+    void InitData();
     QImage getRoundQImage(const QImage& img, QSize size);
+
+protected:
     void PaintEvent(QPaintEvent* p_event);
 };
 
