@@ -9,7 +9,6 @@ LoginDlg::LoginDlg(QWidget *parent) : QDialog(parent)
     WarningLayout();
 }
 
-
 LoginDlg::~LoginDlg()
 {
 }
@@ -67,6 +66,7 @@ void LoginDlg::InitUi()
     DlgMainLt->addWidget(DlgToolBt, 0, Qt::AlignRight | Qt::AlignTop);
     DlgMainLt->addLayout(DlgWidgetLt);
     DlgMainLt->setContentsMargins(0, 0, 0, 0);
+    DlgMainLt->addStretch();
 
     this->setLayout(DlgMainLt);
 }
