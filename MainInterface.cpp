@@ -61,7 +61,6 @@ void MainInterface::mouseMoveEvent(QMouseEvent *event)
 /* mouse free */
 void MainInterface::mouseReleaseEvent(QMouseEvent *event)
 {
-    Q_UNUSED(event);
-
     MainMoveing = false;
+    QWidget::mouseReleaseEvent(event);
 }

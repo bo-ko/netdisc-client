@@ -43,19 +43,15 @@ QImage CircularPhoto::getRoundQImage(const QImage& img,QSize size)
 
     QImage resultImage(size,QImage::Format_ARGB32_Premultiplied);
     QPainter painter(&resultImage);
-
     painter.setRenderHints(QPainter::SmoothPixmapTransform); // Antialiasing
     painter.setCompositionMode(QPainter::CompositionMode_Source);
     painter.fillRect(resultImage.rect(), Qt::transparent);   // Transparent
     painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
-
     QImage mask("mask.png");
     painter.drawImage(NULL_NUM, NULL_NUM, mask);
-
     painter.setCompositionMode(QPainter::CompositionMode_SourceOut);
     painter.drawImage(NULL_NUM, NULL_NUM, img.scaled(size));
     painter.setCompositionMode(QPainter::CompositionMode_DestinationOver);
-
     painter.end();
 
     return resultImage;
@@ -67,8 +63,7 @@ QImage CircularPhoto::getRoundQImage(const QImage& img,QSize size)
  */
 void CircularPhoto::PaintEvent(QPaintEvent* p_event)
 {
-    Q_UNUSED(p_event);
-
     QPainter p(this);
     p.drawImage(NULL_NUM, NULL_NUM, getRoundQImage(img_usr, img_size));
+    return QLabel::paintEvent(p_event);
 }
